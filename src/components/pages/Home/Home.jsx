@@ -1,7 +1,11 @@
+import Layout from "../../global/layout/Layout";
+
 const Home = () => {
     return (
         <div>
-            <h2>Hello World</h2>
+            <Layout>
+                <h1>hello world</h1>
+            </Layout>
         </div>
     );
 };

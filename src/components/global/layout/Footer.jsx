@@ -1,4 +1,4 @@
-const HomeHero = () => {
+const Footer = () => {
     return (
         <div>
             
@@ -6,4 +6,4 @@ const HomeHero = () => {
     );
 };
 
-export default HomeHero;
+export default Footer;

@@ -5,9 +5,7 @@ import AppRouter from './components/global/router/AppRouter'
 function App() {
   return (
     <>
-    <RouterProvider router={AppRouter}>
-
-    </RouterProvider>
+      <RouterProvider router={AppRouter} />
     </>
   )
 }
