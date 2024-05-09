@@ -2,3 +2,45 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+ul,
+li {
+    font-family: "Nunito", sans-serif;
+}
+
+/* header & sidebar css */
+.main-sidebar {
+    max-width: 100% !important;
+}
+
+/* home css */
+.sales-card-icon {
+    color: #28C76F;
+    fill: #28C76F;
+}
+.profit-card-icon {
+    color: #00CFE8;
+    fill: #00CFE8;
+}
+.due-card-icon {
+    color: #EA5455;
+    fill: #EA5455;
+}
+.expense-card-icon {
+    color: #FF9F43;
+    fill: #FF9F43;
+}

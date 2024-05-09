@@ -1,10 +1,11 @@
 import Layout from "../../global/layout/Layout";
+import HomeHero from "./HomeHero";
 
 const Home = () => {
     return (
         <div>
             <Layout>
-                <h1>hello world</h1>
+                <HomeHero />
             </Layout>
         </div>
     );
