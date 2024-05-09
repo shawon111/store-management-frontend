@@ -27,7 +27,7 @@ const SidebarHeader = () => {
                             Home
                         </Sidebar.Item>
                     </Link>
-                    <Link to="/">
+                    <Link to="/sells">
                         <Sidebar.Item>
                             <IoCartOutline size={24} />
                             Sells
@@ -39,7 +39,7 @@ const SidebarHeader = () => {
                             New Sell
                         </Sidebar.Item>
                     </Link>
-                    <Link to="/">
+                    <Link to="/products">
                         <Sidebar.Item>
                             <CiShoppingBasket size={24} />
                             Products

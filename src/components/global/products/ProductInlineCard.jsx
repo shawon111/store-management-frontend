@@ -1,7 +1,7 @@
 import { Badge, Button, Table } from "keep-react";
 import { FiPlusCircle } from "react-icons/fi";
 
-const SellInlineCard = () => {
+const ProductInlineCard = () => {
     return (
         <Table.Row className="bg-white">
             <Table.Cell>
@@ -32,4 +32,4 @@ const SellInlineCard = () => {
     );
 };
 
-export default SellInlineCard;
+export default ProductInlineCard;

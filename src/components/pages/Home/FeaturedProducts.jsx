@@ -1,6 +1,6 @@
 import { Button, Table } from "keep-react";
 import { Cube } from "phosphor-react";
-import SellInlineCard from "../../global/sells/SellInlineCard";
+import ProductInlineCard from "../../global/products/ProductInlineCard";
 
 const FeaturedProducts = () => {
     return (
@@ -28,14 +28,20 @@ const FeaturedProducts = () => {
             </Table.Caption>
             <Table.Head>
                 <Table.HeadCell className="max-w-[180px]">
-                    <p className="text-body-5 font-medium text-metal-400">Title</p>
+                    <p className="text-body-4 font-medium text-metal-400">Title</p>
                 </Table.HeadCell>
-                <Table.HeadCell>Price</Table.HeadCell>
-                <Table.HeadCell>Stock</Table.HeadCell>
-                <Table.HeadCell>Action</Table.HeadCell>
+                <Table.HeadCell>
+                <p className="text-body-4 font-medium text-metal-400">Price</p>
+                </Table.HeadCell>
+                <Table.HeadCell>
+                <p className="text-body-4 font-medium text-metal-400">Stock</p>
+                </Table.HeadCell>
+                <Table.HeadCell>
+                <p className="text-body-4 font-medium text-metal-400">Action</p>
+                </Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-gray-25 divide-y">
-                <SellInlineCard />
+                <ProductInlineCard />
             </Table.Body>
         </Table>
     );
