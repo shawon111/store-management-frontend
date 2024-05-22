@@ -33,7 +33,7 @@ const SidebarHeader = () => {
                             Sells
                         </Sidebar.Item>
                     </Link>
-                    <Link to="/">
+                    <Link to="/sells/new">
                         <Sidebar.Item>
                             <CiSquarePlus size={24} />
                             New Sell
@@ -45,7 +45,7 @@ const SidebarHeader = () => {
                             Products
                         </Sidebar.Item>
                     </Link>
-                    <Link to="/">
+                    <Link to="/products/new">
                         <Sidebar.Item>
                             <CiSquarePlus size={24} />
                             New Product
