@@ -12,7 +12,7 @@ const TotalDue = () => {
                 </div>
                 <div className='w-[70%]'>
                     <Card.Title className='text-xl font-bold text-[18px] color-[#092c4c]'>
-                        $10
+                        $0
                     </Card.Title>
                     <Card.Description className='text-sm font-normal color-[#67748e]'>
                         Total Sales Due Amount

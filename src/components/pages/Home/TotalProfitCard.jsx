@@ -1,7 +1,18 @@
+import axios from "axios";
 import { Card } from "keep-react";
+import { useEffect, useState } from "react";
 import { CiBadgeDollar } from "react-icons/ci";
 
 const TotalProfitCard = () => {
+    const [profit, setProfit] = useState(0)
+    const getProfitAmount = async() => {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/sell/month/profit`).then((response)=>{
+            setProfit(response.data)
+        })
+    }
+    useEffect(()=>{
+        getProfitAmount()
+    }, [])
     return (
         <Card className="max-w-md rounded-lg">
             <Card.Content className='flex justify-between items-center'>
@@ -12,7 +23,7 @@ const TotalProfitCard = () => {
                 </div>
                 <div className='w-[70%]'>
                     <Card.Title className='text-xl font-bold text-[18px] color-[#092c4c]'>
-                        $100
+                        ${profit}
                     </Card.Title>
                     <Card.Description className='text-sm font-normal color-[#67748e]'>
                         Total Profit In This Month

@@ -1,7 +1,18 @@
 import { Table } from "keep-react";
 import OrderInlineCard from "../../global/orders/OrderInlineCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const RecentOrders = () => {
+    const [recentSells, setRecentSells] = useState([])
+    const getRecentSells = async() => {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/sell/recent`).then((response)=>{
+            setRecentSells(response.data)
+        })
+    }
+    useEffect(()=>{
+        getRecentSells()
+    }, [])
     return (
         <Table>
             <Table.Caption>
@@ -13,7 +24,7 @@ const RecentOrders = () => {
             </Table.Caption>
             <Table.Head>
                 <Table.HeadCell className="">
-                    <p className="text-body-5 font-medium text-metal-400">Sells no.</p>
+                    <p className="text-body-5 font-medium text-metal-400">Sells ID.</p>
                 </Table.HeadCell>
                 <Table.HeadCell>
                     Date
@@ -29,7 +40,9 @@ const RecentOrders = () => {
                 </Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-gray-25 divide-y">
-                <OrderInlineCard />
+                {
+                    recentSells.length ? recentSells.map((sell)=> <OrderInlineCard data={sell} key={sell._id} />): <Table.Row></Table.Row>
+                }
             </Table.Body>
         </Table>
     );
