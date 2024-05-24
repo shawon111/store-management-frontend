@@ -2,8 +2,35 @@ import { Button, Table } from "keep-react";
 import { Cube } from "phosphor-react";
 import SitePagination from "../../global/layout/SitePagination";
 import ProductInlineCardTwo from "../../global/products/ProductInlineCardTwo";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductList = () => {
+    const [products, setProducts] = useState([]);
+    const [page, setPage] = useState(1);
+    const [pageCount, setPageCount] = useState(1)
+    const getSells = async () => {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/products/${page}`).then((response) => {
+            setProducts(response.data)
+        })
+    }
+    const getPageCount = async () => {
+        try {
+            axios.get(`${import.meta.env.VITE_BASE_URL}/products/count`).then((response) => {
+                setPageCount(response.data)
+            })
+        } catch (err) {
+            console.log("something went wrong")
+        }
+    }
+    useEffect(() => {
+        getSells();
+        getPageCount();
+    }, [page])
+    // handle page change
+    const handlePageChange = (pageNo) => {
+        setPage(pageNo);
+    }
     return (
         <div>
             <Table showCheckbox={false}>
@@ -46,10 +73,16 @@ const ProductList = () => {
                     </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-gray-25 divide-y">
-                    <ProductInlineCardTwo />
+                    {
+                        products.length ? products.map((product) => <ProductInlineCardTwo key={product._id} data={product} />) : <Table.Row></Table.Row>
+                    }
                 </Table.Body>
             </Table>
-            <SitePagination />
+            <>
+                {
+                    pageCount > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} /> : <div></div>
+                }
+            </>
         </div>
     );
 };
