@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Button, Input, Table } from "keep-react";
 import Layout from "../../global/layout/Layout";
 import { useEffect, useState } from "react";
@@ -5,18 +6,19 @@ import SelectedProductsCard from "./SelectedProductsCard";
 import axios from "axios";
 import ProductSelectionCard from "./ProductSelectionCard";
 import { generateSellID } from "../../../lib/generateSellID";
+import { toast } from "react-toastify";
 
 const AddNewSell = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [searchResult, setSearchResult] = useState([]);
     const [discount, setDiscount] = useState(0);
     const [grandTotal, setGrandTotal] = useState(0)
+    const [isLoading, setIsLoading] = useState(false);
 
     // handle search
     const handleProductSearch = async (text) => {
         try {
             axios.get(`${import.meta.env.VITE_BASE_URL}/products/all/search?s=${text}`).then((response) => {
-                console.log("product_search_log", response.data)
                 setSearchResult(response.data)
             })
         }
@@ -85,6 +87,8 @@ const AddNewSell = () => {
 
     // create sell
     const handleCreateSell = async () => {
+        // set loading state
+        setIsLoading(true)
         // add required key in product objects and calculate total selling and purchase pricing
         const allProducts = selectedProducts;
         let totalSellingPrice = 0;
@@ -114,12 +118,35 @@ const AddNewSell = () => {
         // save the sell
         try {
             axios.post(`${import.meta.env.VITE_BASE_URL}/sell/add`, sellData).then((response) => {
-                console.log(response.data)
+                // set loading state
+                setIsLoading(false)
+                setDiscount(0)
                 setSelectedProducts([])
+                // show toast message
+                toast.success('Sell added successfully', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
-            // console.log("sells data", sellData)
         } catch (err) {
-            console.log("something is wrong")
+            // set loading state
+            setIsLoading(false)
+            toast.success('something is wrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -182,7 +209,11 @@ const AddNewSell = () => {
                         </div>
                         <div className="col-span-full lg:col-span-6">
                             <div className="flex justify-end">
-                                <Button color="primary" onClick={() => handleCreateSell()}>Create Sell</Button>
+                                <Button disabled={isLoading} color="primary" onClick={() => handleCreateSell()}>
+                                    {
+                                        isLoading ? "Creating sell..." : "Create Sell"
+                                    }
+                                </Button>
                             </div>
                         </div>
                     </div>
