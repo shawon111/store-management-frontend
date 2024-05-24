@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Pagination } from 'keep-react';
-const SitePagination = ({page, handlePageChange, count}) => {
-    const pages = Array.from({ length: count }, (_, index) => index);
+const SitePagination = ({page, handlePageChange, count, maxItem}) => {
+    const pageCount = Math.ceil(count / maxItem);
+    const pages = Array.from({ length: pageCount }, (_, index) => index);
     return (
         <div className='py-5'>
             <Pagination shape="rounded">

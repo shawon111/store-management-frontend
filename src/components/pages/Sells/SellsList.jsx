@@ -31,6 +31,8 @@ const SellsList = () => {
     const handlePageChange = (pageNo) => {
         setPage(pageNo);
     }
+    // pagination showing condition
+    const showPagination = Math.ceil(pageCount / 30);
     return (
         <div>
             <Table>
@@ -74,7 +76,7 @@ const SellsList = () => {
             </Table>
             <>
             {
-                pageCount > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} />: <div></div>
+                showPagination > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} maxItem={30} />: <div></div>
             }
             </>
         </div>

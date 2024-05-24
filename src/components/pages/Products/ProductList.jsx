@@ -31,6 +31,8 @@ const ProductList = () => {
     const handlePageChange = (pageNo) => {
         setPage(pageNo);
     }
+    // pagination showing condition
+    const showPagination = Math.ceil(pageCount / 30);
     return (
         <div>
             <Table showCheckbox={false}>
@@ -74,13 +76,13 @@ const ProductList = () => {
                 </Table.Head>
                 <Table.Body className="divide-gray-25 divide-y">
                     {
-                        products.length ? products.map((product) => <ProductInlineCardTwo key={product._id} data={product} />) : <Table.Row></Table.Row>
+                        products.length ? products.map((product) => <ProductInlineCardTwo key={product._id} data={product} maxItem={12} />) : <Table.Row></Table.Row>
                     }
                 </Table.Body>
             </Table>
             <>
                 {
-                    pageCount > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} /> : <div></div>
+                    showPagination > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} /> : <div></div>
                 }
             </>
         </div>
