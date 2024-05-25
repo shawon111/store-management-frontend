@@ -3,6 +3,7 @@ import { Cube } from "phosphor-react";
 import ProductInlineCard from "../../global/products/ProductInlineCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedProducts = () => {
     const [recentProducts, setRecentProducts] = useState([])
@@ -22,18 +23,22 @@ const FeaturedProducts = () => {
                         <p className="text-body-1 font-semibold text-metal-600">Recent Products</p>
                     </div>
                     <div className="flex items-center gap-5">
-                        <Button variant="outline" size="sm">
-                            <span className="pr-2">
-                                <Cube size={24} />
-                            </span>
-                            New Product
-                        </Button>
-                        <Button variant="outline" size="sm">
-                            <span className="pr-2">
-                                <Cube size={24} />
-                            </span>
-                            Search
-                        </Button>
+                        <Link to="products/new">
+                            <Button variant="outline" size="sm">
+                                <span className="pr-2">
+                                    <Cube size={24} />
+                                </span>
+                                New Product
+                            </Button>
+                        </Link>
+                        <Link to="sells/new">
+                            <Button variant="outline" size="sm">
+                                <span className="pr-2">
+                                    <Cube size={24} />
+                                </span>
+                                Search
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </Table.Caption>
@@ -53,7 +58,7 @@ const FeaturedProducts = () => {
             </Table.Head>
             <Table.Body className="divide-gray-25 divide-y">
                 {
-                    recentProducts.length ? recentProducts.map((product)=> <ProductInlineCard data={product} key={product._id} />): <Table.Row></Table.Row>
+                    recentProducts.length ? recentProducts.map((product) => <ProductInlineCard data={product} key={product._id} />) : <Table.Row></Table.Row>
                 }
             </Table.Body>
         </Table>

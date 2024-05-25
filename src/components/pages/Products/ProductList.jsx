@@ -4,6 +4,7 @@ import SitePagination from "../../global/layout/SitePagination";
 import ProductInlineCardTwo from "../../global/products/ProductInlineCardTwo";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -42,18 +43,23 @@ const ProductList = () => {
                             <h4 className="text-2xl font-bold text-metal-600">Products</h4>
                         </div>
                         <div className="flex items-center gap-5">
-                            <Button variant="outline" size="sm">
-                                <span className="pr-2">
-                                    <Cube size={24} />
-                                </span>
-                                New Product
-                            </Button>
-                            <Button variant="outline" size="sm">
-                                <span className="pr-2">
-                                    <Cube size={24} />
-                                </span>
-                                Search
-                            </Button>
+                            <Link to='new'>
+                                <Button variant="outline" size="sm">
+
+                                    <span className="pr-2">
+                                        <Cube size={24} />
+                                    </span>
+                                    New Product
+                                </Button>
+                            </Link>
+                            <Link to='/sells/new'>
+                                <Button variant="outline" size="sm">
+                                    <span className="pr-2">
+                                        <Cube size={24} />
+                                    </span>
+                                    Search
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </Table.Caption>

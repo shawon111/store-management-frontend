@@ -4,6 +4,7 @@ import { Cube } from "phosphor-react";
 import SitePagination from "../../global/layout/SitePagination";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SellsList = () => {
     const [sells, setSells] = useState([]);
@@ -42,12 +43,14 @@ const SellsList = () => {
                             <h4 className="text-2xl font-semibold text-metal-600">My Sells</h4>
                         </div>
                         <div className="flex items-center gap-5">
-                            <Button variant="outline" size="sm">
-                                <span className="pr-2">
-                                    <Cube size={24} />
-                                </span>
-                                New Sell
-                            </Button>
+                            <Link to="new">
+                                <Button variant="outline" size="sm">
+                                    <span className="pr-2">
+                                        <Cube size={24} />
+                                    </span>
+                                    New Sell
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </Table.Caption>
@@ -75,9 +78,9 @@ const SellsList = () => {
                 </Table.Body>
             </Table>
             <>
-            {
-                showPagination > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} maxItem={30} />: <div></div>
-            }
+                {
+                    showPagination > 1 ? <SitePagination page={page} handlePageChange={handlePageChange} count={pageCount} maxItem={30} /> : <div></div>
+                }
             </>
         </div>
     );

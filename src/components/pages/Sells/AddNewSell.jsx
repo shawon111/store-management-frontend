@@ -159,7 +159,7 @@ const AddNewSell = () => {
                 <section className="py-[60px]">
                     <div className="grid grid-cols-12 gap-5">
                         <div className="col-span-full lg:col-span-9 relative">
-                            <h3 className="text-2xl font-bold">Products</h3>
+                            <h3 className="text-2xl font-bold">Find Products</h3>
                             <form className="mt-[20px]">
                                 <fieldset className="max-w-md space-y-1">
                                     <Input className="text-lg font-bolder" placeholder="Search Product" id="title" type="text" onChange={(e) => handleProductSearch(e.target.value)} />
